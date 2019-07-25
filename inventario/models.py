@@ -1,6 +1,5 @@
 from django.db import models
 
-
 # Create your models here.
 class proteinasModel(models.Model):
     nombre = models.CharField(max_length=100)
@@ -11,6 +10,7 @@ class proteinasModel(models.Model):
     carbohidratos = models.FloatField(max_length=50)
     servicios = models.IntegerField()
     gramosProteinas = models.FloatField(max_length=40)
+    urlImagen = models.CharField(max_length=255)
 
 class aminoacidosModel(models.Model):
     nombre = models.CharField(max_length=100)
@@ -19,6 +19,7 @@ class aminoacidosModel(models.Model):
     marca = models.CharField(max_length=50)
     cantidadServicios = models.IntegerField()
     presentacion = models.CharField(max_length=50)
+    urlImagen = models.CharField(max_length=255)
 
 class glutaminasModel(models.Model):
     nombre = models.CharField(max_length=100)
@@ -26,4 +27,5 @@ class glutaminasModel(models.Model):
     precio = models.FloatField(max_length=100)
     marca = models.CharField(max_length=50)
     presentacion = models.CharField(max_length=50)
+    urlImagen = models.CharField(max_length=255)
     
