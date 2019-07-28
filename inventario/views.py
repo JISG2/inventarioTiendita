@@ -106,3 +106,81 @@ class glutaminasView(APIView):
         glutamnia.delete()
         return Response({"message": "Article with id `{}` has been deleted.".format(pk)},status=204)
 
+class proteinasView2(APIView):
+    def put(self, request, pk):
+        data = request.data
+        inventario = proteinasModel.objects.get(id=pk)
+        serializer = proteinasSerializer(inventario, data=data)
+        if serializer.is_valid():
+            proteinaUpdate = serializer.save()
+            return Response({'ok':"actualizado"})
+        response = serializer.errors
+        return Response(response, status=status.HTTP_400_BAD_REQUEST)
+    
+    def delete(self, request, pk,format=None):
+        proteina = get_object_or_404(proteinasModel.objects.all(), pk=pk)
+        proteina.delete()
+        return Response({"message": "Article with id `{}` has been deleted.".format(pk)},status=204)
+
+    def get_object(self,pk):
+        try:
+            return proteinasModel.objects.get(pk=pk)
+        except proteinasModel.DoesNotExist:
+            return "NO"
+    def get(self,request,pk,format=None):
+        ID = self.get_object(pk)
+        ID = proteinasSerializer(ID)
+        return Response(ID.data)
+
+class aminoacidosView2(APIView):
+    def put(self, request, pk):
+        data = request.data
+        inventario = aminoacidosModel.objects.get(id=pk)
+        serializer = aminoacidosSerializer(inventario, data=data)
+        if serializer.is_valid():
+            aminoacidoUpdate = serializer.save()
+            return Response({'ok':"actualizado"})
+        response = serializer.errors
+        return Response(response, status=status.HTTP_400_BAD_REQUEST)
+    
+    def delete(self, request, pk,format=None):
+        aminoacido = get_object_or_404(aminoacidosModel.objects.all(), pk=pk)
+        aminoacido.delete()
+        return Response({"message": "Article with id `{}` has been deleted.".format(pk)},status=204)
+
+    def get_object(self,pk):
+        try:
+            return aminoacidosModel.objects.get(pk=pk)
+        except aminoacidosModel.DoesNotExist:
+            return "NO"
+    def get(self,request,pk,format=None):
+        ID = self.get_object(pk)
+        ID = aminoacidosSerializer(ID)
+        return Response(ID.data)
+
+class glutaminasView2(APIView):
+    def put(self, request, pk):
+        data = request.data
+        inventario = glutaminasModel.objects.get(id=pk)
+        serializer = glutaminasSerializer(inventario, data=data)
+        if serializer.is_valid():
+            glutaminaUpdate = serializer.save()
+            return Response({'ok':"actualizado"})
+        response = serializer.errors
+        return Response(response, status=status.HTTP_400_BAD_REQUEST)
+    
+    def delete(self, request, pk,format=None):
+        glutamina = get_object_or_404(glutaminasModel.objects.all(), pk=pk)
+        glutamina.delete()
+        return Response({"message": "Article with id `{}` has been deleted.".format(pk)},status=204)
+
+    def get_object(self,pk):
+        try:
+            return glutaminasModel.objects.get(pk=pk)
+        except glutaminasModel.DoesNotExist:
+            return "NO"
+    def get(self,request,pk,format=None):
+        ID = self.get_object(pk)
+        ID = glutaminasSerializer(ID)
+        return Response(ID.data)
+
